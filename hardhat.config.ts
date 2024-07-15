@@ -4,7 +4,6 @@ import type { HardhatUserConfig } from "hardhat/config";
 
 import "@nomicfoundation/hardhat-ignition-ethers";
 import "@nomicfoundation/hardhat-toolbox";
-import "hardhat-conflux";
 
 import { readFileSync } from "fs";
 const secret = `0x${

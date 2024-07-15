@@ -1,31 +1,40 @@
 import hre from "hardhat";
-const {
-  conflux, // The Conflux instance
-  ConfluxSDK,
-} = hre;
+import { Conflux, Drip, address } from "js-conflux-sdk";
+
+const conflux = new Conflux({
+  url: hre.network.config.url,
+  networkId: hre.network.config.chainId,
+  // logger: console,
+});
+
 async function main() {
   try {
     // Validate connection
     const version = await conflux.provider.call("cfx_clientVersion");
     console.log(`Connected to Conflux network: ${version}`);
 
-    const accounts = await conflux.getSigners();
-    const contract = await conflux.getContractFactory("Lock");
-
+    const account = conflux.wallet.addPrivateKey(
+      hre.network.config.accounts[0],
+    );
+    const { abi, bytecode } = await hre.artifacts.readArtifact("Lock");
+    const contract = conflux.Contract({
+      abi: abi,
+      bytecode: bytecode,
+    });
     const unlockTime = Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 7;
-    const amount = ConfluxSDK.Drip.fromCFX(10);
+    const amount = Drip.fromCFX(10);
 
     const deployReceipt = await contract
       .constructor(unlockTime)
       .sendTransaction({
-        from: accounts[0].address,
+        from: account.address,
         value: amount,
       })
       .executed();
 
     console.log(
       "Contract deployed to:",
-      ConfluxSDK.address.simplifyCfxAddress(deployReceipt.contractCreated)
+      address.simplifyCfxAddress(deployReceipt.contractCreated),
     );
   } catch (error) {
     if (error.errno === -111) {
