@@ -6,7 +6,7 @@
 ~
 ~**Please do not report security vulnerabilities through public GitHub issues, discussions, or pull requests.**
 ~
-~Instead, please send an email to [YOUR@EMAIL.HERE](mailto:YOUR@EMAIL.HERE).
+~Instead, please send an email to [spcfxda@gmail.com](mailto:spcfxda@gmail.com).
 ~
 ~When reporting an issue, please include as much of the information listed below as possible to help us better understand and resolve the issue:
 ~
