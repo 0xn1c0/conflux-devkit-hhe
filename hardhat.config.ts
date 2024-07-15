@@ -21,17 +21,14 @@ const config: HardhatUserConfig = {
     confluxCoreLocal: {
       url: "http://localhost:12537",
       accounts: [deployerPrivateKey],
-      chainId: 2029,
     },
     confluxCoreTestnet: {
       url: "https://test.confluxrpc.com",
       accounts: [deployerPrivateKey],
-      chainId: 1,
     },
     confluxCore: {
       url: "https://main.confluxrpc.com",
       accounts: [deployerPrivateKey],
-      chainId: 1029,
     },
     confluxESpaceLocal: {
       url: "http://localhost:8545",

@@ -10,12 +10,12 @@
     "prettier": "prettier --plugin=prettier-plugin-solidity \"*.{js,ts,md,json}\" \"ignition/modules/*.{js,ts,md,json}\" \"test/*.{js,ts,md,json}\" \"scripts/**/*.{js,jsx,ts,tsx}\" \"contracts/**/*.sol\"",
     "chain": "dev_node",
     "deploy_espace": "hardhat ignition deploy ./ignition/modules/LockModule.ts",
-    "deploy_core": "hardhat run scripts/deploy_core.ts --network confluxCoreLocal"
+    "deploy_core": "hardhat run scripts/LockDeploy_Core.ts --network confluxCoreLocal"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-ethers": "^3.0.6",
-    "@nomicfoundation/hardhat-ignition-ethers": "latest",
-    "@nomicfoundation/hardhat-toolbox": "4.0.0",
+    "@nomicfoundation/hardhat-ignition-ethers": "^0.15.5",
+    "@nomicfoundation/hardhat-toolbox": "5.0.0",
     "eslint": "^8.56.0",
     "ethers": "^6.13.1",
     "hardhat": "^2.18.0",
