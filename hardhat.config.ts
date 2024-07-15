@@ -7,7 +7,9 @@ import "@nomicfoundation/hardhat-toolbox";
 import "hardhat-conflux";
 
 import { readFileSync } from "fs";
-const secret = `0x${readFileSync("/opt/conflux/genesis_secrets.txt", "utf-8").split(/\r?\n/)[0]}`;
+const secret = `0x${
+  readFileSync("/opt/conflux/genesis_secrets.txt", "utf-8").split(/\r?\n/)[0]
+}`;
 
 const deployerPrivateKey = process.env.DEPLOYER_PRIVATE_KEY ?? secret;
 

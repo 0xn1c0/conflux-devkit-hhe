@@ -25,7 +25,7 @@ async function main() {
 
     console.log(
       "Contract deployed to:",
-      ConfluxSDK.address.simplifyCfxAddress(deployReceipt.contractCreated),
+      ConfluxSDK.address.simplifyCfxAddress(deployReceipt.contractCreated)
     );
   } catch (error) {
     if (error.errno === -111) {

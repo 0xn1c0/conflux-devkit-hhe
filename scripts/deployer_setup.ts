@@ -44,7 +44,7 @@ function main() {
       }
 
       rl.close();
-    },
+    }
   );
 }
 
