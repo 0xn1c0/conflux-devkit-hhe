@@ -42,19 +42,19 @@ describe("Lock", function () {
       const { lock, owner } = await loadFixture(deployOneYearLockFixture);
 
       expect((await lock.read.owner()).toLowerCase()).to.equal(
-        owner.account.address
+        owner.account.address,
       );
     });
 
     it("Should receive and store the funds to lock", async function () {
       const { lock, lockedAmount } = await loadFixture(
-        deployOneYearLockFixture
+        deployOneYearLockFixture,
       );
 
       const client = await hre.viem.getPublicClient();
 
       expect(await client.getBalance({ address: lock.address })).to.equal(
-        lockedAmount
+        lockedAmount,
       );
     });
 
@@ -72,7 +72,7 @@ describe("Lock", function () {
           args: [latestTime],
           value: 1n,
           account: client.account.address,
-        })
+        }),
       ).to.be.rejectedWith("Unlock time should be in the future");
     });
   });
@@ -83,26 +83,26 @@ describe("Lock", function () {
         const { lock } = await loadFixture(deployOneYearLockFixture);
 
         await expect(lock.write.withdraw()).to.be.rejectedWith(
-          "You can't withdraw yet"
+          "You can't withdraw yet",
         );
       });
 
       it("Should revert with the right error if called from another account", async function () {
         const { lock, unlockTime, otherAccount } = await loadFixture(
-          deployOneYearLockFixture
+          deployOneYearLockFixture,
         );
 
         // We can increase the time in Hardhat Network
         await time.increaseTo(unlockTime);
 
         await expect(
-          lock.write.withdraw({ account: otherAccount.account.address })
+          lock.write.withdraw({ account: otherAccount.account.address }),
         ).to.be.rejectedWith("You aren't the owner");
       });
 
       it("Shouldn't fail if the unlockTime has arrived and the owner calls it", async function () {
         const { lock, unlockTime } = await loadFixture(
-          deployOneYearLockFixture
+          deployOneYearLockFixture,
         );
 
         // Transactions are sent using the first signer by default
@@ -116,7 +116,7 @@ describe("Lock", function () {
       it("Should emit an event on withdrawals", async function () {
         const LockArtifact = hre.artifacts.readArtifactSync("Lock");
         const { lock, unlockTime, lockedAmount } = await loadFixture(
-          deployOneYearLockFixture
+          deployOneYearLockFixture,
         );
 
         await time.increaseTo(unlockTime);
@@ -138,7 +138,7 @@ describe("Lock", function () {
     describe("Transfers", function () {
       it("Should transfer the funds to the owner", async function () {
         const { lock, unlockTime, lockedAmount } = await loadFixture(
-          deployOneYearLockFixture
+          deployOneYearLockFixture,
         );
 
         await time.increaseTo(unlockTime);

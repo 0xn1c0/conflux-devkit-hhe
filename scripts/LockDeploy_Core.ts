@@ -2,7 +2,7 @@ import hre from "hardhat";
 import { Conflux, Drip, address } from "js-conflux-sdk";
 
 const conflux = new Conflux({
-  url: hre.network.config.url
+  url: hre.network.config.url,
 });
 
 async function main() {
@@ -38,8 +38,10 @@ async function main() {
   } catch (error) {
     if (error.errno === -111) {
       console.warn(`Failed to connect to ${error.address}:${error.port}.`);
-    } else if (error.code === -32601){
-      console.warn(`${hre.network.name} is not compatible with this deploy, select a conflux Core endpoint`);
+    } else if (error.code === -32601) {
+      console.warn(
+        `${hre.network.name} is not compatible with this deploy, select a conflux Core endpoint`,
+      );
     } else {
       console.error("Failed to deploy contract:", error);
     }
