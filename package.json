@@ -1,0 +1,31 @@
+{
+  "name": "@nomicfoundation/ignition-ts-sample-example",
+  "private": true,
+  "version": "0.15.2",
+  "scripts": {
+    "test": "hardhat test --network hardhat",
+    "lint": "npm run prettier -- --check && npm run eslint",
+    "lint:fix": "npm run prettier -- --write && npm run eslint -- --fix",
+    "eslint": "eslint \"ignition/**/*.{js,jsx,ts,tsx}\" \"test/**/*.{js,jsx,ts,tsx}\" \"scripts/**/*.{js,jsx,ts,tsx}\"",
+    "prettier": "prettier --plugin=prettier-plugin-solidity \"*.{js,ts,md,json}\" \"ignition/modules/*.{js,ts,md,json}\" \"test/*.{js,ts,md,json}\" \"scripts/**/*.{js,jsx,ts,tsx}\" \"contracts/**/*.sol\"",
+    "chain": "dev_node",
+    "deploy_espace": "hardhat ignition deploy ./ignition/modules/LockModule.ts",
+    "deploy_core": "hardhat run scripts/deploy_core.ts --network confluxCoreLocal"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^3.0.6",
+    "@nomicfoundation/hardhat-ignition-ethers": "latest",
+    "@nomicfoundation/hardhat-toolbox": "4.0.0",
+    "eslint": "^8.56.0",
+    "ethers": "^6.13.1",
+    "hardhat": "^2.18.0",
+    "hardhat-conflux": "^0.0.2",
+    "js-conflux-sdk": "^2.4.7",
+    "prettier-plugin-solidity": "1.1.3",
+    "typescript-eslint": "^7.16.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "envfile": "^7.1.0"
+  }
+}

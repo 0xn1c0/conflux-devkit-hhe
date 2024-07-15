@@ -1,0 +1,18 @@
+
+base:
+  data_dir: $CONFLUX_NODE_ROOT/pos_config/pos_db
+  role: validator
+  waypoint:
+    from_config: $WAYPOINT
+consensus:
+  round_initial_timeout_ms: 60000
+  safety_rules:
+    service:
+      type: local
+execution:
+  genesis_file_location: $CONFLUX_NODE_ROOT/pos_config/genesis_file
+logger:
+  file: $CONFLUX_NODE_ROOT/log/pos.log
+  level: INFO
+#storage:
+  #dir: $CONFLUX_NODE_ROOT/pos_config/pos_db/db
