@@ -1,4 +1,0 @@
-#!/bin/bash
-ulimit -n 10000
-export RUST_BACKTRACE=1
-conflux --config $CONFIG_PATH 2> $CONFLUX_NODE_ROOT/log/stderr.txt

@@ -13,7 +13,7 @@ async function main() {
     console.log(`Connected to Conflux network: ${version}`);
 
     const account = conflux.wallet.addPrivateKey(
-      hre.network.config.accounts[0],
+      hre.network.config.accounts[0 as keyof typeof hre.network.config.accounts],
     );
     const { abi, bytecode } = await hre.artifacts.readArtifact("Lock");
     const contract = conflux.Contract({

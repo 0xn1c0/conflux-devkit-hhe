@@ -24,6 +24,7 @@
     "typescript-eslint": "^7.16.0"
   },
   "dependencies": {
+    "devkit": "file:../../opt/devkit",
     "dotenv": "^16.4.5",
     "envfile": "^7.1.0"
   }
